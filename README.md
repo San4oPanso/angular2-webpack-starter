@@ -19,7 +19,8 @@
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angularclass/NG6-starter)  
 > If you're looking to learn about Webpack and ES6 Build Tools check out [ES6-build-tools](https://github.com/AngularClass/ES6-build-tools)  
-> If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)
+> If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)  
+> If you're looking for Webpack 2 version then see the experimental version [angular2-webpack2-starter](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged
 
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for Angular 2.
@@ -55,6 +56,19 @@ npm start
 ```
 go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
 
+# Nitrous Quickstart
+
+You can quickly create a free development environment to get started using this
+starter kit in the cloud on [Nitrous](https://www.nitrous.io/):
+
+<a href="https://www.nitrous.io/quickstart?repo=https://github.com/nitrous-io/angular2-webpack-starter">
+  <img src="https://nitrous-image-icons.s3.amazonaws.com/quickstart.png" alt="Nitrous Quickstart" width=142 height=34>
+</a>
+
+Simply run `HOST=0.0.0.0 npm start` from the terminal inside of
+`~/code/angular2-webpack-starter` and access your site via the "Preview > 3000"
+link in the IDE.
+
 # Table of Contents
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
@@ -73,16 +87,27 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
 angular2-webpack-starter/
+ ├──config/                    * our configuration
+ |   ├──helpers.js             * helper functions for our configuration files
+ |   ├──spec-bundle.js         * ignore this magic that sets up our angular 2 testing environment
+ |   ├──karma.conf.js          * karma config for our unit tests
+ |   ├──protractor.conf.js     * protractor config for our end-to-end tests
+ │   ├──webpack.dev.js         * our development webpack config
+ │   ├──webpack.prod.js        * our production webpack config
+ │   └──webpack.test.js        * our testing webpack config
+ │
  ├──src/                       * our source files that will be compiled to javascript
- |   ├──main.ts                * our entry file for our browser environment
+ |   ├──main.browser.ts        * our entry file for our browser environment
  │   │
  |   ├──index.html             * Index.html: where we generate our index page
  │   │
  |   ├──polyfills.ts           * our polyfills file
  │   │
+ |   ├──vendor.ts              * our vendor file
+ │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
- │   │   ├──app.e2e.ts        * a simple end-to-end test for /
+ │   │   ├──app.e2e.ts         * a simple end-to-end test for /
  │   │   └──app.ts             * App.ts: a simple version of our App component components
  │   │
  │   └──assets/                * static assets are served here
@@ -91,17 +116,12 @@ angular2-webpack-starter/
  │       ├──robots.txt         * for search engines to crawl your website
  │       └──human.txt          * for humans to know who the developers are
  │
- ├──spec-bundle.js             * ignore this magic that sets up our angular 2 testing environment
- ├──karma.config.js            * karma config for our unit tests
- ├──protractor.config.js       * protractor config for our end-to-end tests
  │
+ ├──tslint.json                * typescript lint config
+ ├──typedoc.json               * typescript documentation generator
  ├──tsconfig.json              * config that webpack uses for typescript
  ├──typings.json               * our typings manager
- ├──package.json               * what npm uses to manage it's dependencies
- │
- ├──webpack.config.js          * our development webpack config
- ├──webpack.test.config.js     * our testing webpack config
- └──webpack.prod.config.js     * our production webpack config
+ └──package.json               * what npm uses to manage it's dependencies
 ```
 
 # Getting Started
@@ -272,7 +292,9 @@ see [typings/registry](https://github.com/typings/registry)
 * How do I async load a component?
  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
 * Error: Cannot find module 'tapable'
- * Remove `node_modules/` and run `npm install` again
+ * Remove `node_modules/` and run `npm cache clean` then `npm install`
+* What about Webpack 2?
+ * If you're looking for Webpack 2 version then see the [experimental version](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged soon.
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
