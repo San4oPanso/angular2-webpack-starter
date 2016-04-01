@@ -6,7 +6,6 @@ import {RouteConfig, Router} from 'angular2/router';
 
 import {Home} from './home';
 import {AppState} from './app.service';
-import {RouterActive} from './router-active';
 
 /*
  * App Component
@@ -16,11 +15,8 @@ import {RouterActive} from './router-active';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ RouterActive ],
+  directives: [ ],
   styles: [`
-    h1 {
-      font-family: Arial, Helvetica, sans-serif
-    }
     nav ul {
       display: inline;
       list-style-type: none;
@@ -64,7 +60,7 @@ import {RouterActive} from './router-active';
       </div>
     </footer>
 
-    <pre>this.appState.state = {{ appState.state | json }}</pre>
+    <pre>this.state = {{ state | json }}</pre>
   `
 })
 @RouteConfig([
@@ -80,8 +76,12 @@ export class App {
 
   constructor(public appState: AppState) {}
 
+  get state() {
+    return this.appState.get();
+  }
+
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    console.log('Initial App State', this.state);
   }
 
 }
