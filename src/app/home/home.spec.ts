@@ -10,11 +10,10 @@ import {
 import {Component, provide} from 'angular2/core';
 import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
-import {WebpackState} from 'angular2-hmr';
 
 // Load the implementations that should be tested
-import {Home} from './home';
-import {Title} from './services/title';
+import {Home} from './home.component';
+import {Title} from './title';
 import {AppState} from '../app.service';
 
 describe('Home', () => {
@@ -29,7 +28,6 @@ describe('Home', () => {
       deps: [MockBackend, BaseRequestOptions]
     }),
 
-    WebpackState,
     AppState,
     Title,
     Home
