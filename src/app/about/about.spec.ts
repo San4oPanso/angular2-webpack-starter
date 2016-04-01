@@ -10,7 +10,7 @@ import {
 import {Component, provide} from 'angular2/core';
 
 // Load the implementations that should be tested
-import {About} from './about.component';
+import {About} from './about';
 
 describe('About', () => {
   // provide our implementations or mocks to the dependency injector
