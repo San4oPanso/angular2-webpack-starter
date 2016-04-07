@@ -7,7 +7,6 @@ import {RouteConfig, Router} from 'angular2/router';
 import {Home} from './home';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
-
 /*
  * App Component
  * Top Level Component
@@ -34,7 +33,8 @@ import {RouterActive} from './router-active';
     nav li.active {
       background-color: lightgray;
     }
-  `],
+  `,
+  ],
   template: `
     <header>
       <nav>
@@ -48,6 +48,9 @@ import {RouterActive} from './router-active';
           </li>
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
+          </li>
+          <li router-active>
+            <a [routerLink]=" ['San4o'] ">San4o</a>
           </li>
         </ul>
       </nav>
@@ -72,6 +75,7 @@ import {RouterActive} from './router-active';
   { path: '/home',  name: 'Home',  component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
+  { path: '/san4o', name: 'San4o', loader: () => require('es6-promise!./san4o')('San4o') },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
