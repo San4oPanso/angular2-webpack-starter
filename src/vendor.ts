@@ -13,7 +13,15 @@ import 'angular2/router';
 
 // RxJS
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/buffer';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/throttle';
+import 'rxjs/add/operator/debounce';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/timer';
 
 // Angular 2 Material 2
 // TODO(gdi2290): uncomment when material is fixed
