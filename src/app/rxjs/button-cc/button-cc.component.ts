@@ -1,29 +1,30 @@
 ﻿import {Component, HostBinding, EventEmitter, OnInit}        from 'angular2/core';
 import {Observable}       from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
 import {Subject}          from 'rxjs/Subject';
-import {xButton} from '../../common/button';
+import {XButton} from '../../common/button';
 @Component({
     selector: 'button-cc',
     template: `
 <form class="bs-component col-lg-4">
-
-<div class="form-group">
+    <div class="form-group">
         <label class="control-label" for="bufferTime">Counting clicks. Buffering time</label>
-        <input class="form-control" id="bufferTime" type="number" step="50" min="100" [(ngModel)]="bufferTime">
+        <input class="form-control" id="bufferTime" type="number" step="50" min="100"
+             [(ngModel)]="bufferTime">
     </div>
 <div class="form-group">
 
 </div>
     <div class="form-group">
-
-        <button id="x" [xButton] class="btn-lg btn-block" (click)="clickEmitter.next($event)">CLICK ME</button>
+        <button id="x" class="btn-lg btn-block"
+            [x-button] (click)="clickEmitter.next($event)">CLICK ME</button>
     </div>
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="#item of items">{{item}}</li>
+        <li class="list-group-item" *ngFor="#item of items">{{item}}x clicks</li>
     </ul>
 </form>
   `,
-    directives: [xButton]
+    directives: [XButton]
 })
 export class ButtonClickCountComponent implements OnInit {
     items: number[] = [];
@@ -32,17 +33,19 @@ export class ButtonClickCountComponent implements OnInit {
 
     ngOnInit() {
         var button = document.getElementById('x');
-      //  var clickStream = Rx.Observable.fromEvent(button, 'click');
-        var clickDebounce = this.clickEmitter.debounce(() => Observable.timer(this.bufferTime))
-        this.clickEmitter
-            .buffer(clickDebounce)
-            .map(list => list.length)
-            .subscribe(x => {
-                this.items.unshift(x);
-                if (this.items.length > 5) this.items.length = 5;
-            });
-    }
 
+        var clickDebounce = this.clickEmitter
+            .debounce(() => Observable.timer(this.bufferTime));
+
+        var bufferedClicksCount = this.clickEmitter
+            .buffer(clickDebounce)
+            .map(list => list.length);
+
+        bufferedClicksCount.subscribe(x => {
+            this.items.unshift(x);
+            if (this.items.length > 5) this.items.length = 5;
+        });
+    }
 
     constructor() {
         this.bufferTime = 300;

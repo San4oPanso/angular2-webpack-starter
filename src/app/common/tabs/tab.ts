@@ -1,12 +1,8 @@
-﻿import { Component } from 'angular2/core';
+﻿import { Component, Input } from 'angular2/core';
 import { Tabs } from './tabs';
 
 @Component({
     selector: 'tab',
-    inputs: [
-        'title:tabTitle',
-        'active'
-    ],
     styles: [`
     .pane{
       padding: 1em;
@@ -19,7 +15,9 @@ import { Tabs } from './tabs';
   `
 })
 export class Tab {
+    @Input()
     title: string;
+    @Input()
     active = this.active || false;
 
     constructor(tabs: Tabs) {

@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {AppState} from '../app.service';
 import {San4oModel, ISan4oModel} from './san4o.model';
 import {Tabs, Tab} from '../common/tabs';
-import {xButton}  from '../common/button';
+import {XButton}  from '../common/button';
 
 @Component({
     // The selector is what angular internally uses
@@ -13,7 +13,7 @@ import {xButton}  from '../common/button';
     providers: [],
     // We need to tell Angular's compiler which directives are in our template.
     // Doing so will allow Angular to attach our behavior to an element
-    directives: [Tabs, Tab, xButton],
+    directives: [Tabs, Tab, XButton],
     // We need to tell Angular's compiler which custom pipes are in our template.
     pipes: [],
     // Our list of styles in our component. We may add more to compose many styles together

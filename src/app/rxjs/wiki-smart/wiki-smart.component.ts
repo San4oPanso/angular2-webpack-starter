@@ -1,7 +1,8 @@
-﻿import {Component, HostBinding}        from 'angular2/core';
+﻿import {Component}        from 'angular2/core';
+import {Control}          from 'angular2/common';
+
 import {JSONP_PROVIDERS}  from 'angular2/http';
 import {Observable}       from 'rxjs/Observable';
-import {Subject}          from 'rxjs/Subject';
 
 import {WikipediaService} from './wikipedia.service';
 
@@ -11,7 +12,8 @@ import {WikipediaService} from './wikipedia.service';
 <form class="bs-component col-lg-4">
     <div class="form-group">
         <label class="control-label" for="inputDefault">Fetches when typing stops</label>
-        <input #term (keyup)="search(term.value)" type="text" class="form-control" id="inputDefault">
+        <input type="text" class="form-control" id="inputDefault"
+            [ngFormControl]="term">
     </div>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="#item of items | async">{{item}}</li>
@@ -21,14 +23,12 @@ import {WikipediaService} from './wikipedia.service';
     providers: [JSONP_PROVIDERS, WikipediaService]
 })
 export class WikiSmartComponent {
-    
+
     constructor(private _wikipediaService: WikipediaService) { }
 
-    private _searchTermStream = new Subject<string>();
+    term = new Control();
 
-    search(term: string) { this._searchTermStream.next(term); }
-
-    items: Observable<string[]> = this._searchTermStream
+    items: Observable<string[]> = this.term.valueChanges
         .debounceTime(300)
         .distinctUntilChanged()
         .switchMap((term: string) => this._wikipediaService.search(term));

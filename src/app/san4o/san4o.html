@@ -1,21 +1,21 @@
 <div>
     <tabs>
-        <tab tabTitle="Tab 1">
+        <tab title="Tab 1">
             <div class="form-group label-floating is-empty">
                 <label for="i5" class="control-label">label-floating</label>
                 <input type="text" class="form-control" id="i5" [(ngModel)]="model.name"
                        [value]="dasdasd"
                        (onChange)="value=$target.value">
             </div>
-            <button [xButton]="model.buttonColor" (click)="onButtonClick()">BUTTON CONTENT</button>
-            <a [xButton] color="success" (click)="onButtonClick()">HOME LINK</a>
+            <button [x-button]="model.buttonColor" (click)="onButtonClick()">BUTTON CONTENT</button>
+            <a [x-button] color="success" (click)="onButtonClick()">HOME LINK</a>
             {{model | json}}
         </tab>
-        <tab tabTitle="Tab 2">
+        <tab title="Tab 2">
             <tabs>
-                <tab tabTitle="Tab 1">HMR 1 Content</tab>
-                <tab tabTitle="Tab 2">Tab 2 Content</tab>
-                <tab tabTitle="Tab 3">Tab 3 Content</tab>
+                <tab title="Tab 1">HMR 1 Content</tab>
+                <tab title="Tab 2">Tab 2 Content</tab>
+                <tab title="Tab 3">Tab 3 Content</tab>
 
             </tabs>
         </tab>
@@ -23,9 +23,9 @@
 
     ==========
     <tabs>
-        <tab tabTitle="Tab 1">HMR 1 Content</tab>
-        <tab tabTitle="Tab 2">Tab 2 Content</tab>
-        <tab tabTitle="Tab 3">Tab 3 Content</tab>
+        <tab title="Tab 1">HMR 1 Content</tab>
+        <tab title="Tab 2">Tab 2 Content</tab>
+        <tab title="Tab 3">Tab 3 Content</tab>
 
     </tabs>
 </div>

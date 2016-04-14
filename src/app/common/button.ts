@@ -10,13 +10,10 @@
     ChangeDetectionStrategy
 } from 'angular2/core';
 
-@Component({
-    selector: '[xButton]',
-    template: `<ng-content></ng-content>`,
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+@Directive({
+    selector: '[x-button]',
 })
-export class xButton {
+export class XButton {
     _color: xButtonColor;
 
     @Input()
@@ -28,7 +25,7 @@ export class xButton {
         this._updateColor(xButtonColor[value]);
     }
 
-    @Input()
+    @Input('x-button')
     get xButton(): xButtonColor {
         return this._color;
     }
