@@ -37,7 +37,6 @@ import {RouterActive} from './router-active';
   `,
   ],
   template: `
-    <header>
     <md-toolbar color="primary">
       <span>{{ name }}</span>
       <nav>
@@ -62,7 +61,6 @@ import {RouterActive} from './router-active';
         </ul>
       </nav>
     </md-toolbar>
-    </header>
 
     <main>
       <router-outlet></router-outlet>
