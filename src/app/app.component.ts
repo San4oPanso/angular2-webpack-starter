@@ -82,9 +82,9 @@ import {RouterActive} from './router-active';
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
+  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
   { path: '/san4o', name: 'San4o', loader: () => require('es6-promise!./san4o')('San4o') },
-  { path: '/rxjs-demo', name: 'RxJS', loader: () => require('es6-promise!./rxjs')('RxJS') },
+  { path: '/rxjs-demo', name: 'RxJS', loader: () => require('es6-promise!./rxjs')('RxJS') }
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
