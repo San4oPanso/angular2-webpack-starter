@@ -27,7 +27,7 @@ export class Tabs {
         tab.active = true;
 
         function _deactivateAllTabs(tabs: Tab[]) {
-            tabs.forEach((tab) => tab.active = false);
+            tabs.forEach((tabb) => tabb.active = false);
         }
 
     }

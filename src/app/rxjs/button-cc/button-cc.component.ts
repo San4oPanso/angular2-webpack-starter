@@ -32,12 +32,12 @@ export class ButtonClickCountComponent implements OnInit {
     public clickEmitter = new Subject<any>();
 
     ngOnInit() {
-        var button = document.getElementById('x');
+        let button = document.getElementById('x');
 
-        var clickDebounce = this.clickEmitter
+        let clickDebounce = this.clickEmitter
             .debounce(() => Observable.timer(this.bufferTime));
 
-        var bufferedClicksCount = this.clickEmitter
+        let bufferedClicksCount = this.clickEmitter
             .buffer(clickDebounce)
             .map(list => list.length);
 

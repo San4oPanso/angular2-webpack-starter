@@ -34,7 +34,7 @@ import {RouterActive} from './router-active';
     md-toolbar li.active {
       background-color: lightgray;
     }
-  `,
+  `
   ],
   template: `
     <header>

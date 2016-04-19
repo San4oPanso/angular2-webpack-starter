@@ -11,7 +11,7 @@
 } from 'angular2/core';
 
 @Directive({
-    selector: '[x-button]',
+    selector: '[x-button]'
 })
 export class XButton {
     _color: xButtonColor;
@@ -41,7 +41,7 @@ export class XButton {
     }
 
     _setElementColor(color: xButtonColor, isAdd: boolean) {
-        if (color != null) {
+        if (color !== undefined) {
             this._setElementClass((String)(color), isAdd);
         }
     }
