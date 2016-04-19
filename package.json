@@ -77,6 +77,7 @@
     "@angular2-material/toolbar": "2.0.0-alpha.2",
     "angular2": "2.0.0-beta.15",
     "core-js": "^2.2.2",
+    "normalize.css": "^4.1.1",
     "rxjs": "5.0.0-beta.2",
     "zone.js": "~0.6.11"
   },
@@ -116,7 +117,7 @@
     "rimraf": "^2.5.2",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
-    "ts-helper": "0.0.1",
+    "ts-helpers": "1.1.0",
     "ts-node": "^0.7.1",
     "tslint": "^3.7.1",
     "tslint-loader": "^2.1.3",
