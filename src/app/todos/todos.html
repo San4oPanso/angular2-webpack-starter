@@ -10,7 +10,7 @@
             </span>
         </div>
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="#item of todos | async" [class.list-group-item-success]="item.completed" (click)="onClick_ToggleDone(item.id)">
+            <li class="list-group-item" *ngFor="let item of todos | async" [class.list-group-item-success]="item.completed" (click)="onClick_ToggleDone(item.id)">
                 #{{item.id}} - {{item.text}}
             </li>
         </ul>

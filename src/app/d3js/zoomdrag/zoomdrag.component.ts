@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from 'angular2/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import * as d3 from 'd3';
 import {Subject} from 'rxjs/Subject';
 @Component({

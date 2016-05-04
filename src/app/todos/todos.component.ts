@@ -1,16 +1,16 @@
-import {Component, HostBinding, ChangeDetectionStrategy, NgZone} from 'angular2/core';
-import {Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
+import {Component, HostBinding, ChangeDetectionStrategy, NgZone} from '@angular/core';
+import {Control, ControlGroup, FormBuilder, Validators} from '@angular/common';
 import {Todo} from './todo.model';
 import {TodosStore} from './todo.reducer';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 import {TodoActions} from './todo.actions';
-import {NgForm}    from 'angular2/common';
+import {NgForm}    from '@angular/common';
 import {UNDO, REDO} from '../core/undoredo';
 
 @Component({
     selector: 'todos',  // <home></home>
-    providers: [TodoActions],
+    providers: [TodoActions, FormBuilder],
     directives: [],
     styles: [],
     template: require('./todos.html'),
