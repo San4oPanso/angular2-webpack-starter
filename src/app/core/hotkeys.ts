@@ -1,5 +1,5 @@
 import * as Mousetrap from 'mousetrap';
-import { Injectable, Directive, OnDestroy, OnInit, Input } from 'angular2/core';
+import { Injectable, Directive, OnDestroy, OnInit, Input } from '@angular/core';
 
 @Injectable()
 export class Hotkeys {

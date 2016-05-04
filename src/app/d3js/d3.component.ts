@@ -1,4 +1,4 @@
-import {Component, HostBinding} from 'angular2/core';
+import {Component, HostBinding} from '@angular/core';
 import * as d3 from 'd3';
 import {ZoomDragComponent} from './zoomdrag/zoomdrag.component';
 @Component({

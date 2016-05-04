@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {AppState} from '../app.service';
 import {San4oModel, ISan4oModel} from './san4o.model';
 import {Tabs, Tab} from '../common/tabs';

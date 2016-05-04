@@ -1,7 +1,7 @@
-﻿import {Component}        from 'angular2/core';
-import {Control}          from 'angular2/common';
+﻿import {Component}        from '@angular/core';
+import {Control}          from '@angular/common';
 
-import {JSONP_PROVIDERS}  from 'angular2/http';
+import {JSONP_PROVIDERS}  from '@angular/http';
 import {Observable}       from 'rxjs/Observable';
 
 import {WikipediaService} from './wikipedia.service';
@@ -16,7 +16,7 @@ import {WikipediaService} from './wikipedia.service';
             [ngFormControl]="term">
     </div>
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="#item of items | async">{{item}}</li>
+        <li class="list-group-item" *ngFor="let item of items | async">{{item}}</li>
     </ul>
 </form>
   `,

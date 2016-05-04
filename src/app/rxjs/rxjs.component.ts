@@ -1,4 +1,4 @@
-import {Component, HostBinding} from 'angular2/core';
+import {Component, HostBinding} from '@angular/core';
 import {RxJSModel, IRxJSModel} from './rxjs.model';
 import {WikiSmartComponent} from './wiki-smart/wiki-smart.component';
 import {ButtonClickCountComponent} from './button-cc/button-cc.component.ts';

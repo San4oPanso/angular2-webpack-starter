@@ -8,7 +8,7 @@
     Renderer,
     ViewEncapsulation,
     ChangeDetectionStrategy
-} from 'angular2/core';
+} from '@angular/core';
 
 @Directive({
     selector: '[x-button]'

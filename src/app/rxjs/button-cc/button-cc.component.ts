@@ -1,4 +1,4 @@
-﻿import {Component, HostBinding, EventEmitter, OnInit}        from 'angular2/core';
+﻿import {Component, HostBinding, EventEmitter, OnInit}        from '@angular/core';
 import {Observable}       from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import {Subject}          from 'rxjs/Subject';
@@ -20,7 +20,7 @@ import {XButton} from '../../common/button';
             [x-button] (click)="clickEmitter.next($event)">CLICK ME</button>
     </div>
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="#item of items">{{item}}x clicks</li>
+        <li class="list-group-item" *ngFor="let item of items">{{item}}x clicks</li>
     </ul>
 </form>
   `,
