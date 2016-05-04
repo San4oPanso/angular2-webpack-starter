@@ -1,8 +1,8 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, Router} from 'angular2/router';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouteConfig, Router} from '@angular/router-deprecated';
 
 import {Home} from './home';
 import {AppState} from './app.service';
@@ -17,10 +17,9 @@ import {RouterActive} from './router-active';
   providers: [ ],
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
-  styles: [`
-    body {
-      margin: 0;
-    }
+  styles: [
+    require('normalize.css'),
+    `
     md-toolbar ul {
       display: inline;
       list-style-type: none;
@@ -63,6 +62,7 @@ import {RouterActive} from './router-active';
       </nav>
     </md-toolbar>
     </header>
+    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
 
     <main>
       <router-outlet></router-outlet>
@@ -88,10 +88,14 @@ import {RouterActive} from './router-active';
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
+  loading = false;
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState) {}
+  constructor(
+    public appState: AppState) {
+
+  }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);

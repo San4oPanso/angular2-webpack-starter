@@ -1,10 +1,10 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {HmrState} from 'angular2-hmr';
 
 @Injectable()
 export class AppState {
-    // HmrState uis used by HMR to track the any state during reloading
-    @HmrState() _state = {};
+  // HmrState uis used by HMR to track the any state during reloading
+  @HmrState() _state = { };
 
     constructor() {
 
