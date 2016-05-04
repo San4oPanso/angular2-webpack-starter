@@ -1,8 +1,8 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, Router} from 'angular2/router';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouteConfig, Router} from '@angular/router-deprecated';
 import {MiddleWareLogs} from './core';
 import {Home} from './home';
 import {AppState} from './app.service';
@@ -70,6 +70,7 @@ import {Hotkeys} from './core/hotkeys';
       </nav>
     </md-toolbar>
     </header>
+    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
 
     <main>
       <router-outlet></router-outlet>
@@ -97,10 +98,14 @@ import {Hotkeys} from './core/hotkeys';
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
+  loading = false;
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState, public hotkeys: Hotkeys) { }
+  constructor(
+    public appState: AppState, public hotkeys: Hotkeys) {
+
+  }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
