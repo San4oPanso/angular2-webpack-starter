@@ -3,19 +3,21 @@
  */
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
-
+import {MiddleWareLogs} from './core';
 import {Home} from './home';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
+import {TodosStore} from './todos/todo.reducer';
+import {Hotkeys} from './core/hotkeys';
 /*
  * App Component
  * Top Level Component
  */
 @Component({
   selector: 'app',
-  pipes: [ ],
-  providers: [ ],
-  directives: [ RouterActive ],
+  pipes: [],
+  providers: [...MiddleWareLogs, TodosStore, Hotkeys],
+  directives: [RouterActive],
   encapsulation: ViewEncapsulation.None,
   styles: [
     require('normalize.css'),
@@ -58,6 +60,12 @@ import {RouterActive} from './router-active';
           <li router-active>
             <a [routerLink]=" ['RxJS'] ">RxJS</a>
           </li>
+          <li router-active>
+            <a [routerLink]=" ['D3JSComponent'] ">D3</a>
+          </li>
+          <li router-active>
+            <a [routerLink]=" ['TodosComponent'] ">Todos</a>
+          </li>
         </ul>
       </nav>
     </md-toolbar>
@@ -78,19 +86,21 @@ import {RouterActive} from './router-active';
   `
 })
 @RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
+  { path: '/', name: 'Index', component: Home, useAsDefault: true },
+  { path: '/home', name: 'Home', component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
   { path: '/san4o', name: 'San4o', loader: () => require('es6-promise!./san4o')('San4o') },
-  { path: '/rxjs-demo', name: 'RxJS', loader: () => require('es6-promise!./rxjs')('RxJS') }
+  { path: '/rxjs-demo', name: 'RxJS', loader: () => require('es6-promise!./rxjs')('RxJS') },
+  { path: '/d3js-demo', name: 'D3JSComponent', loader: () => require('es6-promise!./d3js')('D3JSComponent') },
+  { path: '/todos', name: 'TodosComponent', loader: () => require('es6-promise!./todos')('TodosComponent') },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState) {}
+  constructor(public appState: AppState, public hotkeys: Hotkeys) { }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);

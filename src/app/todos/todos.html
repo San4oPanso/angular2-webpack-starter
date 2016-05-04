@@ -1,0 +1,20 @@
+<div>
+    <div [hotkey]="{ 'ctrl+z': onClick_BoundableUndo }"></div>
+    <h3>TODOS with Redux & Undo/Redo</h3>
+    <form class="bs-component col-lg-4" [ngFormModel]="todoForm">
+        <div class="input-group">
+            <input type="text" class="form-control" id="inputDefault" placeholder="New todo" [ngFormControl]="todoForm.controls['text']"
+                required>
+            <span class="input-group-btn">
+                <button class="btn btn-success" (click)="onClick_AddTodo()" [disabled]="!todoForm.valid">Add todo</button>
+            </span>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="#item of todos | async" [class.list-group-item-success]="item.completed" (click)="onClick_ToggleDone(item.id)">
+                #{{item.id}} - {{item.text}}
+            </li>
+        </ul>
+    </form>
+    <button class="btn btn-warn" (click)="onClick_Undo()" [disabled]="!canUndo">UNDO</button>
+    <button class="btn btn-warn" (click)="onClick_Redo()" [disabled]="!canRedo">REDO</button>
+</div>
