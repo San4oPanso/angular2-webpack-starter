@@ -3,7 +3,6 @@ import {Reducer, Action, provideStore, combineReducers} from '@ngrx/store';
 import {UndoRedoReducer} from '../core/undoredo';
 import {Todo} from './todo.model';
 export const initialState = { todos: [new Todo(123, 'asd')] }; //new Array<Todo>()
-console.error(initialState);
 
 export const TodosReducer: Reducer<any> = (state = initialState, action: TodoActions.TodoAction) => {
     const pTodo = action.payload;

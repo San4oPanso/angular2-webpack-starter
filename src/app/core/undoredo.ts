@@ -30,10 +30,10 @@ export function UndoRedoReducer(reducer) {
                     future: newFuture
                 }
             default:
-                console.log('default', action)
+                //console.log('default', action)
                 // Delegate handling the action to the passed reducer
                 const newPresent = reducer(present, action)
-                console.log(newPresent)
+                //console.log(newPresent)
                 if (present === newPresent) {
                     return state
                 }
