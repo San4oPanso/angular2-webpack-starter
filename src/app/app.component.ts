@@ -7,7 +7,7 @@ import {MiddleWareLogs} from './core';
 import {Home} from './home';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
-import {TodosStore} from './todos/todo.reducer';
+import {AppStore} from './app.store';
 import {Hotkeys} from './core/hotkeys';
 /*
  * App Component
@@ -16,7 +16,7 @@ import {Hotkeys} from './core/hotkeys';
 @Component({
   selector: 'app',
   pipes: [],
-  providers: [...MiddleWareLogs, TodosStore, Hotkeys],
+  providers: [...MiddleWareLogs, AppStore, Hotkeys],
   directives: [RouterActive],
   encapsulation: ViewEncapsulation.None,
   styles: [

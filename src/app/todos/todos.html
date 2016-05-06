@@ -1,5 +1,5 @@
 <div>
-    <div [hotkey]="{ 'ctrl+z': onClick_BoundableUndo }"></div>
+    <div [hotkey]="{ 'ctrl+z': onClick_BoundableUndo,  'ctrl+y': onClick_BoundableRedo  }"></div>
     <h3>TODOS with Redux & Undo/Redo</h3>
     <form class="bs-component col-lg-4" [ngFormModel]="todoForm">
         <div class="input-group">
@@ -14,6 +14,14 @@
                 #{{item.id}} - {{item.text}}
             </li>
         </ul>
+        {{todos|async|json}}
+
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of todos2 | async" [class.list-group-item-success]="item.completed" (click)="onClick_ToggleDone(item.id)">
+                #{{item.id}} - {{item.text}}
+            </li>
+        </ul>
+        {{todos2|async|json}}
     </form>
     <button class="btn btn-warn" (click)="onClick_Undo()" [disabled]="!canUndo">UNDO</button>
     <button class="btn btn-warn" (click)="onClick_Redo()" [disabled]="!canRedo">REDO</button>

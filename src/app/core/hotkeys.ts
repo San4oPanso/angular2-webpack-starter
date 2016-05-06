@@ -5,6 +5,7 @@ import { Injectable, Directive, OnDestroy, OnInit, Input } from '@angular/core';
 export class Hotkeys {
     private _mouseTrapEnabled = true;
     private _hotkeys = [];
+    public static preventIn = ['INPUT', 'SELECT', 'TEXTAREA'];
     constructor() {
     }
 
@@ -72,10 +73,18 @@ export class Hotkeys {
                     // check if the input has a mousetrap class, and skip checking preventIn if so
                     if ((' ' + target.className + ' ').indexOf(' mousetrap ') > -1) {
                         shouldExecute = true;
+                    } else {
+                        // don't execute callback if the event was fired from inside an element listed in preventIn
+                        for (var i = 0; i < Hotkeys.preventIn.length; i++) {
+                            if (Hotkeys.preventIn[i] === nodeName) {
+                                shouldExecute = false;
+                                break;
+                            }
+                        }
                     }
                 }
-
-                _callback.apply(this, arguments);
+                
+                if (shouldExecute) _callback.apply(this, arguments);
             };
         }
 
