@@ -13,74 +13,88 @@ import {RouterActive} from './router-active';
  */
 @Component({
   selector: 'app',
-  pipes: [ ],
-  providers: [ ],
-  directives: [ RouterActive ],
+  pipes: [],
+  providers: [],
+  directives: [RouterActive],
   encapsulation: ViewEncapsulation.None,
   styles: [
     require('normalize.css'),
-    `
-    md-toolbar ul {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 60px;
+    `html, body{
+      height: 100%;
+      background: #F4FAFA;
     }
-    md-toolbar li {
-      display: inline;
+    button.active{
+      background: #fff;
+      color: #009688;
     }
-    md-toolbar li.active {
-      background-color: lightgray;
+    button.active:hover{
+      color: #fff;
     }
-  `,
+  .fill{
+      flex: 1 1 auto;
+    }
+    .app-state{
+      margin: 15px;
+      flex: 1;
+    }
+    .home{
+      flex: 1;
+    }
+    md-content{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    footer{
+      flex: 0 0 60px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }`
   ],
   template: `
-    <header>
-    <md-toolbar color="primary">
-      <span>{{ name }}</span>
-      <nav>
-        <ul>
-          <li router-active>
-            <a [routerLink]=" ['Index'] ">Index</a>
-          </li>
-          |
-          <li router-active>
-            <a [routerLink]=" ['Home'] ">Home</a>
-          </li>
-          |
-          <li router-active>
+    <md-content>
+      <md-toolbar color="primary">
+          <span>{{ name }}</span>
+          <span class="fill"></span>
+          <button md-button router-active [routerLink]=" ['Index'] ">
+            Index
+          </button>
+          <button md-button router-active [routerLink]=" ['Home'] ">
+            Home
+          </button>
+          <button md-button router-active [routerLink]=" ['About'] ">
+            About
+          </button>
+            <button md-button router-active>
             <a [routerLink]=" ['About'] ">About</a>
-          </li>
-          <li router-active>
+         </button
+          <button md-button router-active>
             <a [routerLink]=" ['San4o'] ">San4o</a>
-          </li> 
-          <li router-active>
+         </button 
+          <button router-active>
             <a [routerLink]=" ['RxJS'] ">RxJS</a>
-          </li>
-        </ul>
-      </nav>
-    </md-toolbar>
-    </header>
-    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
-
-    <main>
+         </button
+      </md-toolbar>
+      
+      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
+      
       <router-outlet></router-outlet>
-    </main>
+      
+      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
-    <pre>this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-      <span>
-        <img [src]="angularclassLogo" width="1%">
-      </span>
-    </footer>
+      <footer>
+        <img [src]="angularclassLogo" width="6%">
+        WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+      </footer>
+    </md-content>
   `
 })
 @RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
+  { path: '/', name: 'Index', component: Home, useAsDefault: true },
+  { path: '/home', name: 'Home', component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
   { path: '/san4o', name: 'San4o', loader: () => require('es6-promise!./san4o')('San4o') },
